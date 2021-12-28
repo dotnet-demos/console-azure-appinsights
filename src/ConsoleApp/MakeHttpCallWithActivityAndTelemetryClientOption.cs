@@ -25,6 +25,7 @@ namespace ConsoleApp
         {
             using (Activity activity = new Activity(nameof(MakeHttpCallWithActivityAndTelemetryClientOption)).Start())
             {
+                
                 using (tc.StartOperation<RequestTelemetry>(activity))
                 {
                     string result = await new HttpClient().GetStringAsync("https://uploadbeta.com/api/pi/?cached&n=10");

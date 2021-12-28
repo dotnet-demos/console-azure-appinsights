@@ -16,7 +16,7 @@ namespace ConsoleApp
         }
         async internal Task Execute()
         {
-            using (new Activity(nameof(MakeHttpCallWithActivityOption)).Start())
+            using (new Activity(nameof(MakeHttpCallWithActivityOption)))
             {
                 string result = await new HttpClient().GetStringAsync("https://uploadbeta.com/api/pi/?cached&n=10");
                 logger.LogInformation($"Value of pi from API: {result}");

@@ -16,8 +16,12 @@ namespace ConsoleApp
                     services.AddSingleton<Option1>();
                     services.AddSingleton<Option2>();
                     services.AddSingleton<MakeHttpCallWithActivityOption>();
+                    services.AddSingleton<MakeHttpCallWithActivityStartOption>();
 
+                    services.AddSingleton<NestedWithActivityOption>();
                     services.AddSingleton<MakeHttpCallWithActivityAndTelemetryClientOption>();
+
+                    services.AddSingleton<IntHttpWithActivityStartOption>();
                     //services.AddApplicationInsightsTelemetry();
                     services.AddLogging();
                     services.AddApplicationInsightsTelemetryWorkerService();
