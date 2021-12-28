@@ -14,6 +14,13 @@ namespace ConsoleApp
                     services.AddHostedService<MenuService>();
                     services.AddScoped<IDependency, Dependency>();
                     services.AddSingleton<Option1>();
+                    services.AddSingleton<Option2>();
+                    services.AddSingleton<MakeHttpCallWithActivityOption>();
+
+                    services.AddSingleton<MakeHttpCallWithActivityAndTelemetryClientOption>();
+                    //services.AddApplicationInsightsTelemetry();
+                    services.AddLogging();
+                    services.AddApplicationInsightsTelemetryWorkerService();
                 })
                 //.UseConsoleLifetime() // This may be used when running inside container. But we dont really run an interative menu program in container.
                 .Build()

@@ -15,9 +15,13 @@ namespace ConsoleApp
         }
         async internal Task Execute()
         {
-            logger.LogTrace($"{nameof(Option1)} : Start");
-            await Task.Delay(1);
-            logger.LogInformation($"Value from {nameof(IDependency)} is '{ dependency.Foo()}'");
+            using (logger.BeginScope($"Scope {nameof(Option1)}"))
+            {
+                logger.LogTrace($"Start");
+                await Task.Delay(1);
+                logger.LogInformation($"Value from {nameof(IDependency)} is '{ dependency.Foo()}'");
+            }
+            logger.LogTrace("Waiting for the next option");
         }
     }
 }
