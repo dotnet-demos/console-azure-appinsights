@@ -50,7 +50,7 @@ app.MapGet("/weatherforecast", () =>
 app.MapGet("/api/circle/areaOf/{radius}", async (int radius,Calculator calc, ILoggerFactory loggerFactory) =>
 {
     ILogger localLogger = loggerFactory.CreateLogger("CircleAPI");
-    localLogger.LogInformation($"api/circle/areaOf/{radius} - Started.");
+    localLogger.LogTrace($"api/circle/areaOf/{radius} - Started.");
     return await calc.AreaOfCircle(radius);
 }).WithName("AreaOfCircle");
 app.Run();
