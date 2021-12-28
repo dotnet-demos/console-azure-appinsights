@@ -42,6 +42,11 @@ namespace ConsoleApp
         }
         protected async override Task ExecuteAsync(CancellationToken stoppingToken)
         {
+            logger.LogTrace("This is a sample trace");
+            logger.LogDebug("This is a sample debug");
+            logger.LogInformation("This is a sample info");
+            logger.LogWarning("This is a sample warning");
+
             Activity.DefaultIdFormat = ActivityIdFormat.W3C;
             try
             {
