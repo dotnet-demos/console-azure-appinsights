@@ -1,9 +1,16 @@
+using Microsoft.ApplicationInsights.Extensibility;
+using Shared;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddSingleton<ITelemetryInitializer>((serviceProvider) =>
+{
+    return new CloudRoleNameTelemetryInitializer("webApiHost");
+});
 builder.Services.AddApplicationInsightsTelemetry();
 
 var app = builder.Build();

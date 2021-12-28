@@ -2,6 +2,8 @@
 using DotNet.Helpers;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.ApplicationInsights.Extensibility;
+using Shared;
 
 namespace ConsoleApp
 {
@@ -24,6 +26,10 @@ namespace ConsoleApp
                     services.AddSingleton<IntHttpWithActivityStartOption>();
                     //services.AddApplicationInsightsTelemetry();
                     services.AddLogging();
+                    services.AddSingleton<ITelemetryInitializer>((serviceProvider) =>
+                    {
+                        return new CloudRoleNameTelemetryInitializer("ConsoleApp");
+                    });
                     services.AddApplicationInsightsTelemetryWorkerService();
                 })
                 //.UseConsoleLifetime() // This may be used when running inside container. But we dont really run an interative menu program in container.
